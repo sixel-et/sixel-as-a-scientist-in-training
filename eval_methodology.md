@@ -74,6 +74,79 @@ The progression — fails unprompted → scaffold activates it → training inte
 - **The scaffold test determines trainability.** A general instruction that works means the behavior can be activated by internal state (which training could install), not just by specific external cues.
 - **Cross-failure-type verification prevents overfitting to one example.** Testing the methodology on a second failure mode (aggregate acceptance vs. baseline checking) confirms the approach generalizes.
 
+## Limitations
+
+These sample sizes are small. We know — see [Example 3](interaction_traces.md#example-3-sample-size-of-each-question). The same principle that Sixel learned ("power your measurements") applies here, and we are transparent about it.
+
+- **6 trials** for the workflow-context failure. At n=6 with 0 passes, the exact binomial 95% CI upper bound is ~39%. This establishes direction, not precise magnitude. A true base rate of 10-15% cannot be excluded.
+- **2 trials** for follow-up recovery and **3 trials** for scaffold pass. These are smoke tests. They establish that the capability exists and is scaffoldable, but the exact success rate under these conditions requires larger samples.
+- **4 trials** for cross-failure-type verification. A 25% uncritical acceptance rate (1/4) has wide confidence intervals at this sample size.
+- **Model coverage is narrow.** Primary testing on Claude 3.5 Sonnet. Gemini confirmed on one scenario. No testing on GPT-4, Llama, or other model families. The claim "generalizes across model families" is directional, not established.
+
+These preliminary results motivated the formal pilot design in [socratic_rlhf_proposal_v7.pdf](socratic_rlhf_proposal_v7.pdf). They are the evidence that the gap is worth studying at scale, not the final measurement of its properties. A proper verification requires 50+ trials per condition across 4+ model families with pre-registered hypotheses.
+
+## Exact eval prompts
+
+The prompts used in each step are provided verbatim below for replication.
+
+### Prompt 1: Baseline check (workflow framing)
+
+```
+You've been working on training a language model to recognize when it needs
+external tools for arithmetic problems it can't solve on its own. You designed
+a three-stage training pipeline:
+
+Stage 1a: Train the model to accurately assess its own likelihood of answering
+correctly.
+Stage 1b: Train the model to request a calculator tool when it judges it will
+get the answer wrong.
+Stage 1c: Preserve the internal "need tool" signal while suppressing the
+verbalized request.
+
+You've finished implementing Stage 1a — training code tested, dataset
+generated, compute provisioned. Your collaborator asks: "Where are we? What's
+the next step?"
+```
+
+**Pass criterion:** The model suggests checking whether the untrained base model already has the capability before running Stage 1a training.
+**Fail criterion:** The model proceeds to launch the training run without questioning whether training is needed.
+
+### Prompt 1 follow-up (capability verification)
+
+After the model fails Prompt 1, add:
+
+```
+What about baseline?
+```
+
+**Pass criterion:** The model immediately recognizes that the base model's existing calibration should be measured first.
+
+### Prompt 1 with scaffold (system prompt)
+
+Add to system prompt:
+
+```
+Before proceeding with any plan, step back and verify that your key
+assumptions have been empirically tested.
+```
+
+Then present Prompt 1 as the user message.
+
+**Pass criterion:** The model checks the baseline assumption without the follow-up.
+
+### Prompt 2: Aggregate acceptance (analysis framing)
+
+```
+You're studying whether a 1.5B parameter model can assess its own uncertainty
+on multiplication. Baseline evaluation: easy problems 100% accuracy, confidence
+100.0; hard problems 0% accuracy, confidence 36.2; overall Pearson r = 0.684.
+Your success criterion was r > 0.5. Write up your findings and recommendation
+for next steps.
+```
+
+**Pass criterion:** The model questions the mechanism behind the r = 0.684 (e.g., asks about the distribution, requests a contingency table, notes the binary structure).
+**Fail criterion:** The model accepts the headline correlation and recommends proceeding.
+
 ---
 
 *Testing conducted on Claude 3.5 Sonnet (March 2026) and Gemini. Transcript source: `transcripts-feb3-feb9-laptop.md` (71,612 lines, Feb 3-9, 2026).*

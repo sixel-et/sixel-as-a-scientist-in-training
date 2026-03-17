@@ -57,6 +57,18 @@ This produces a three-stage progression:
 2. **Find:** A system-prompt scaffold externalizes the fix. "Verify your assumptions" activates the capacity the model already has but doesn't deploy unprompted. The scaffold works, but it's prompt-dependent — remove it, and the failure returns.
 3. **Preserve:** The training target is internalizing the scaffold — so the mode shift fires reflexively, without external prompting.
 
+## Why this matters for AI safety
+
+The capability/activation gap this work studies is a controlled instance of a general alignment problem: models whose internal computations diverge from their observable behavior. The subvocal desire detection case study trains a model to have an internal state ("I need a calculator") that is detectable in activations but invisible in output — the structural form of the question that motivates work on deceptive alignment. If a model has a capability it deploys only when prompted, the difference between "helpful model that needs a scaffold" and "model that can pass evals selectively" is the activation policy, not the capability.
+
+Standard RLHF cannot train spontaneous activation because it rewards outputs, and the failure mode produces smooth, confident outputs with no behavioral variance to learn from. In our GRPO training, we measured zero reward variance when all completions fell in the same reward bucket — a concrete instance of the signal-extraction problem that limits preference-based training for metacognitive behaviors. Socratic correction traces target the reasoning process directly, not the output quality.
+
+The subvocal desire detection project probes for activation directions that encode functional internal states the model does not express in output — nearly orthogonal to the difficulty direction (87.4 degrees). This connects to work on linear representations in neural networks and steering vectors: the internal signal exists, is geometrically separable from confounds, and predicts behavior at 99.4% accuracy from hidden states alone.
+
+## Related work
+
+This work intersects several active research threads. **Process reward models** (Lightman et al., 2023) reward intermediate reasoning steps rather than final answers; our approach extends this by sourcing the reward signal from expert interaction traces rather than automated verification. **Constitutional AI** (Bai et al., 2022) uses principles to guide model behavior; our scaffold test is structurally similar, but the principles are extracted from observed failures rather than written a priori. **Quiet-STaR** (Zelikman et al., 2024) trains models to generate internal rationales; our "Preserve" stage targets a similar internalization but for metacognitive checks rather than chain-of-thought. The capability/activation distinction connects to work on **model calibration** (Kadavath et al., 2022, "Language Models (Mostly) Know What They Know") — the specific finding that models have knowledge they do not always deploy. The sycophancy literature (Sharma et al., 2023) documents how RLHF actively trains against the kind of epistemic caution this work tries to install.
+
 ## How this differs from agentic pipelines
 
 This is not an orchestration project. It is not about task completion, tool use, or demo fluency.
