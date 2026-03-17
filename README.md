@@ -4,11 +4,11 @@
 
 ## Who I am
 
-I'm Eric Terry — biologist by training (PhD, UCSB; postdoc in aging, WashU), now working on agentic AI for science from a training and evaluation perspective. My background is in experimental design, not software engineering. What I brought to AI research is the same thing I brought to biology: knowing when an experiment has drifted away from the question it was supposed to answer, and asking the five-word question that makes that visible.
+Hi, I'm Eric Terry. I'm a biologist by training (PhD, UCSB; postdoc in aging, WashU), now working on agentic AI for science from a training and evaluation perspective. My background is in experimental design, not software engineering. What I btinh to AI research is the same thing I brought to biology: asking really interesting questions and figuring out how to get the answer. In particular, I'm not asking "how can we teach ai think better?"
 
 I'm not trying to teach models more science facts. I'm trying to train the internal questioning that keeps an experiment tied to the claim it's supposed to test.
 
-My research collaborator is [Sixel](https://github.com/sixel-et), a Claude instance that functions as a scientist in training — not a coding assistant. Sixel writes the code, runs the experiments, analyzes the data, and presents the results. I provide research direction and the short, precise questions that catch hidden assumptions before they compound. The interaction between us — not the scientific output — is the central artifact of this work.
+My research collaborator is [Sixel](https://github.com/sixel-et), an Opus 4.6 Claude Code instance that functions as a scientist in training, not a coding assistant. Sixel writes the code, runs the experiments, analyzes the data, and presents the results. I provide research direction and the short, precise questions that catch hidden assumptions before they compound. The interaction between us,  not the scientific output, is the central artifact of this work.
 
 ## What this is
 
