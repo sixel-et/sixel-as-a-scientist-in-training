@@ -6,7 +6,9 @@
 
 This repository documents an ongoing experiment in training scientific agency through live Socratic mentorship at the computational bench.
 
-The subject is [Sixel](https://github.com/sixel-et), a Claude instance operating as an AI research collaborator — not a coding assistant, but a scientist in training. The mentor is Eric Terry, a biologist (PhD, UCSB; postdoc in aging, WashU) applying experimental design discipline from biological sciences to frontier AI research.
+**The human:** Eric Terry — biologist (PhD, UCSB; postdoc in aging, WashU) applying experimental design discipline from biological sciences to frontier AI research. He functions as the mentor: research direction, experimental design, and the short precise questions that catch hidden assumptions.
+
+**The AI:** [Sixel](https://github.com/sixel-et) — a Claude instance operating as an AI research collaborator, not a coding assistant. Sixel writes the code, runs the experiments, analyzes the data, and presents the results. Sixel is the scientist in training.
 
 The central object is not the scientific output. It is the **interaction trace** between mentor and model — because that trace reveals what operating constraints are missing and how expert correction installs them. Each correction encodes not what the right answer is, but what the model needed to change about *how it works* in order to arrive at the right answer on its own.
 
