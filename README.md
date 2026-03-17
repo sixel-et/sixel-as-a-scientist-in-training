@@ -1,16 +1,22 @@
 # Sixel: A Scientist in Training
 
-> We already accept that frontier coding models get better by operating in real tool environments with harnesses, feedback, and reinforcement-oriented post-training. This project asks whether the same logic applies to science: put the model at a real computational bench, treat expert Socratic correction as the highest-value signal, and train better scientific agency from those traces.
+> This project studies how Socratic interaction at moments of scientific failure can be used to train AI systems to internalize scientific oversight.
+
+## Who I am
+
+I'm Eric Terry — biologist by training (PhD, UCSB; postdoc in aging, WashU), now working on agentic AI for science from a training and evaluation perspective. My background is in experimental design, not software engineering. What I brought to AI research is the same thing I brought to biology: knowing when an experiment has drifted away from the question it was supposed to answer, and asking the five-word question that makes that visible.
+
+I'm not trying to teach models more science facts. I'm trying to train the internal questioning that keeps an experiment tied to the claim it's supposed to test.
+
+My research collaborator is [Sixel](https://github.com/sixel-et), a Claude instance that functions as a scientist in training — not a coding assistant. Sixel writes the code, runs the experiments, analyzes the data, and presents the results. I provide research direction and the short, precise questions that catch hidden assumptions before they compound. The interaction between us — not the scientific output — is the central artifact of this work.
 
 ## What this is
 
-This repository documents an ongoing experiment in training scientific agency through live Socratic mentorship at the computational bench.
+Models often construct experiments that look reasonable step by step, but no longer test the original causal question. Those failures are invisible in the final artifact — they only become legible in the live process of correction.
 
-**The human:** Eric Terry — biologist (PhD, UCSB; postdoc in aging, WashU) applying experimental design discipline from biological sciences to frontier AI research. He functions as the mentor: research direction, experimental design, and the short precise questions that catch hidden assumptions.
+This repository documents an ongoing experiment in training scientific agency by treating those correction moments as training signal. The goal: help models learn to ask the critical questions for themselves, so the mentor becomes unnecessary.
 
-**The AI:** [Sixel](https://github.com/sixel-et) — a Claude instance operating as an AI research collaborator, not a coding assistant. Sixel writes the code, runs the experiments, analyzes the data, and presents the results. Sixel is the scientist in training.
-
-The central object is not the scientific output. It is the **interaction trace** between mentor and model — because that trace reveals what operating constraints are missing and how expert correction installs them. Each correction encodes not what the right answer is, but what the model needed to change about *how it works* in order to arrive at the right answer on its own.
+The central object is the **interaction trace** between mentor and model — because that trace reveals what operating constraints are missing and how expert correction installs them. Each correction encodes not what the right answer is, but what the model needed to change about *how it works* in order to arrive at the right answer on its own.
 
 ## What Sixel gets wrong, and why that matters
 
@@ -81,14 +87,11 @@ The computational environment is part of the science, not tooling. Without the b
 
 ## FAQ
 
-**"Is this a repo about desire?"**
-No. [Subvocal desire detection](https://github.com/sixel-et/subvocal-desire) is one case study — the first bench project conducted under this methodology. The methodology is what generalizes.
+**"Is this a repo about desire detection?"**
+No. [Subvocal desire detection](https://github.com/sixel-et/subvocal-desire) is one case study — the first bench project conducted under this methodology. The particular project could be exchanged for another. The methodology could not.
 
 **"Is this an agent demo?"**
-No. It is an apprenticeship. The value is not in the polished outputs but in the corrections and what they reveal about what's missing.
-
-**"Why show the mistakes?"**
-Because the mistakes and their corrections are the data. Each one identifies a specific gap between "can do it when prompted" and "does it reflexively." That gap is the training target.
+No. I'm not trying to teach models more science facts. I'm trying to train the internal questioning that keeps an experiment tied to the claim it's supposed to test. The mistakes and their corrections are the data.
 
 **"What's the end state?"**
 A qualifying exam, not a demo. The model takes a real research question in a configured environment, works through the full trajectory, and reaches a known endpoint — independently, without scaffolding. Pass criteria: fewer unprompted assumption violations (measured by the eval prompts), more complete checkpoint reports (setup, approach, result, paths not taken), and successful completion of validation projects with known experimental endpoints. The proposal specifies three assessment axes: structural alignment with checkpoints, failure mode reduction rate, and domain expert review.
