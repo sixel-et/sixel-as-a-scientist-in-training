@@ -4,7 +4,7 @@
 
 ## Who I am
 
-Hi, I'm Eric Terry. I'm a biologist by training (PhD, UCSB; postdoc in aging, WashU), now working on agentic AI for science from a training and evaluation perspective. My background is in experimental design, not software engineering. What I btinh to AI research is the same thing I brought to biology: asking really interesting questions and figuring out how to get the answer. In particular, I'm not asking "how can we teach ai think better?"
+Hi, I'm Eric Terry. I'm a biologist by training (PhD, UCSB; postdoc in aging, WashU), now working on agentic AI for science from a training and evaluation perspective. My background is in experimental design, not software engineering. What I btinh to AI research is the same thing I brought to biology: asking really interesting questions and figuring out how to get the answer. In particular, I'm not asking "how can we teach ai think to better?"
 
 I'm not trying to teach models more science facts. I'm trying to train the internal questioning that keeps an experiment tied to the claim it's supposed to test.
 
