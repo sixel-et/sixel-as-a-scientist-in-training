@@ -16,7 +16,7 @@ Models often construct experiments that look reasonable step by step, but no lon
 
 This repository documents an ongoing experiment in training scientific agency by treating those correction moments as training signal. The goal: help models learn to ask the critical questions for themselves, so the mentor becomes unnecessary.
 
-The central object is the **interaction trace** between mentor and model — because that trace reveals what operating constraints are missing and how expert correction installs them. Each correction encodes not what the right answer is, but what the model needed to change about *how it works* in order to arrive at the right answer on its own.
+The central object is the **interaction trace** between mentor and model. The trace reveals what operating constraints are missing and how expert correction installs them. Each correction encodes not what the right answer is, but what the model needed to change about *how it works* in order to arrive at the right answer on its own.
 
 ## What Sixel gets wrong, and why that matters
 
