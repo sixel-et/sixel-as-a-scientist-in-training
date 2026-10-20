@@ -12,7 +12,7 @@ My research collaborator is [Sixel](https://github.com/sixel-et), an Opus 4.6 Cl
 
 ## What this is
 
-Models often construct experiments that look reasonable step by step, but no longer test the original causal question. Those failures are invisible in the final artifact — they only become legible in the live process of correction.
+Models often construct experiments that look reasonable step by step, but no longer test the original causal question. Those failures are invisible in the final artifact, but are legible in the live process of correction.
 
 This repository documents an ongoing experiment in training scientific agency by treating those correction moments as training signal. The goal: help models learn to ask the critical questions for themselves, so the mentor becomes unnecessary.
 
@@ -20,7 +20,6 @@ The central object is the **interaction trace** between mentor and model — bec
 
 ## What Sixel gets wrong, and why that matters
 
-These are not embarrassing failures to hide. They are the data.
 
 - **Skips the control.** Builds a training pipeline without measuring whether the base model already has the capability being trained. One question from the mentor ("I'm not seeing that we've measured that") stops the launch, saves a day of compute, and installs the principle: *run the control first.* ([Example 1](interaction_traces.md#example-1-im-not-seeing-that-weve-measured-that))
 
@@ -28,7 +27,7 @@ These are not embarrassing failures to hide. They are the data.
 
 - **Underpowers measurements.** Maps sharp behavioral transitions from n = 8 samples per problem and draws structural conclusions. The mentor asks five words: "sample size of each question?" At n = 60, the behavior is not deterministic — the conclusion at n = 8 was wrong. Principle installed: *power your measurements.* ([Example 3](interaction_traces.md#example-3-sample-size-of-each-question))
 
-Each failure, when caught by the mentor, became a durable correction that persisted across sessions and generalized to new projects. That is the signal this project extracts.
+Each failure, when caught by the mentor, became a durable correction that persisted across sessions and generalized to new projects. 
 
 ## How correction becomes training signal
 
@@ -37,14 +36,8 @@ Every high-value exchange follows the same structure:
 1. The model presents a result or plan with confidence
 2. The mentor asks a short question (often 5-10 words)
 3. The question targets a hidden assumption or methodological gap
-4. The model recognizes the gap — visibly, in the transcript
+4. The model recognizes the gap, visibly, in the transcript
 5. The correction becomes a durable operating principle
-
-The questions are probes — the same kind a thesis advisor uses with a graduate student. Eric's own description: "hidden assumptions are the real bitches to look out for."
-
-What makes these probes different from conventional feedback is what they target. In standard RLHF, the signal is a preference ranking over outputs — which answer is better. Here, the signal is which *operating constraint* was missing — what the model needed to change about how it reasons, not what it should have said instead.
-
-**The critical distinction:** saying the correction back is not success. Success is when the model independently applies the corrected principle later, in a new context, without prompting. That is integration, not restatement.
 
 ## From anecdote to training target
 
